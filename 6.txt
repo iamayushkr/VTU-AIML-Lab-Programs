@@ -1,0 +1,15 @@
+from sklearn.naive_bayes import GaussianNB
+import pandas as pd
+dataset=pd.read_csv("prgm 5-data5 (2).csv")
+from sklearn import metrics
+from sklearn.model_selection import train_test_split as split
+x=dataset.iloc[:,0:-1].values
+y=dataset.iloc[:,-1].values
+x_train,x_test,y_train,y_test=split(x,y,test_size=0.2,random_state=1)
+gnb=GuassianNB()
+classifier=gnb.fit(x_train,y_train)
+y_pred=classifier.predict(x_test)
+print('Accuracy matrices')
+print('accuracy of classifier is',metrics.accuracy_score(y_test,y_pred))
+print('confusion matrices')
+print(metrics.confusion_matrix(y_test,y_pred))
